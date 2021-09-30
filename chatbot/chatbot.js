@@ -17,7 +17,8 @@ const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
 
 module.exports = {
-    textQuery: async function(text, parameters = {}) {
+    textQuery: async function(text, userID, parameters = {}) {
+        let sessionPath = sessionClient.sessionPath(projectId, sessionId + userID);
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -42,8 +43,9 @@ module.exports = {
 
     },
 
-    eventQuery: async function(event, parameters = {}) {
+    eventQuery: async function(event,userID, parameters = {}) {
         let self = module.exports;
+        let sessionPath = sessionClient.sessionPath(projectId, sessionId + userID);
         const request = {
             session: sessionPath,
             queryInput: {
