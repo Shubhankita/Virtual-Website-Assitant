@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 
 import Message from './Message';
 import Card from './Card';
+import QuickReplies from './QuickReplies';
 
 const cookies = new Cookies();
 
@@ -17,6 +18,7 @@ class Chatbot extends Component {
         super(props);
         // This binding is necessary to make `this` work in the callback
         this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+        this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
         this.state = {
             messages: []
         };
@@ -70,6 +72,14 @@ class Chatbot extends Component {
         this.talkInput.focus();
     }
 
+    _handleQuickReplyPayload(event, payload, text) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.df_text_query(text);
+
+    }
+
     renderCards(cards) {
         return cards.map((card, i) => <Card key={i} payload={card.structValue}/>);
     }
@@ -86,7 +96,7 @@ class Chatbot extends Component {
                         <div className="col s2">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
                         </div>
-                        <div style={{ overflowY: 'auto', overflowX: 'hidden'}}>
+                        <div style={{ overflow: 'auto', overflowY: 'scroll'}}>
                             <div style={{ height: 300, width:message.msg.payload.fields.cards.listValue.values.length * 270}}>
                                 {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                             </div>
@@ -94,6 +104,17 @@ class Chatbot extends Component {
                     </div>
                 </div>
             </div>
+        } else if (message.msg &&
+            message.msg.payload &&
+            message.msg.payload.fields &&
+            message.msg.payload.fields.quick_replies
+        ) {
+            return <QuickReplies
+                text={message.msg.payload.fields.text ? message.msg.payload.fields.text : null}
+                key={i}
+                replyClick={this._handleQuickReplyPayload}
+                speaks={message.speaks}
+                payload={message.msg.payload.fields.quick_replies.listValue.values}/>;
         }
     }
 
