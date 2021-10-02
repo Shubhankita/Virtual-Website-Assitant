@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios/index";
+import { withRouter } from 'react-router-dom';
 
 import Cookies from 'universal-cookie';
 import { v4 as uuid } from 'uuid';
@@ -25,6 +26,7 @@ class Chatbot extends Component {
         this.state = {
             messages: [],
             showBot: true,
+            shopWelcomeSent: false
         };
         if (cookies.get('userID') === undefined) {
             cookies.set('userID', uuid(), { path: '/' });
@@ -69,6 +71,18 @@ class Chatbot extends Component {
 
     componentDidMount() {
         this.df_event_query('Welcome');
+
+        if (window.location.pathname === '/shop' && !this.state.shopWelcomeSent) {
+            this.df_event_query('WELCOME_SHOP');
+            this.setState({ shopWelcomeSent: true, showBot: true });
+        }
+
+        this.props.history.listen(() => {
+            if (this.props.history.location.pathname === '/shop' && !this.state.shopWelcomeSent) {
+                this.df_event_query('WELCOME_SHOP');
+                this.setState({ shopWelcomeSent: true, showBot: true });
+            }
+        });
     }
 
     componentDidUpdate() {
@@ -87,7 +101,7 @@ class Chatbot extends Component {
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.setState({showBot: false});
+        this.setState({showBot: true});
     }
 
     _handleQuickReplyPayload(event, payload, text) {
@@ -95,7 +109,7 @@ class Chatbot extends Component {
         event.stopPropagation();
 
         switch (payload) {
-            case 'recommended_yes':
+            case 'recommend_yes':
                 this.df_event_query('SHOW_RECOMMENDATIONS');
                 break;
             case 'training_masterclass':
@@ -209,4 +223,4 @@ class Chatbot extends Component {
     }
 }
 
-export default Chatbot;
+export default withRouter(Chatbot);
