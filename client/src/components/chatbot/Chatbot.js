@@ -110,7 +110,7 @@ class Chatbot extends Component {
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.setState({showBot: true});
+        this.setState({showBot: false});
     }
 
     _handleQuickReplyPayload(event, payload, text) {
@@ -192,7 +192,7 @@ class Chatbot extends Component {
                 <div style={{ minHeight: 500, maxHeight: 500, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
                     <nav>
                         <div className="nav-wrapper">
-                            <a href="/" className="brand-logo">ChatBot</a>
+                            <a href="/" className="brand-logo" style={{ marginLeft: 15 }}>ChatBot</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><a href="/" onClick={this.hide}>Close</a></li>
                             </ul>
@@ -217,7 +217,7 @@ class Chatbot extends Component {
                 <div style={{ minHeight: 40, maxHeight: 500, width:400, position: 'absolute', bottom: 0, right: 0, border: '1px solid lightgray'}}>
                     <nav>
                         <div className="nav-wrapper">
-                            <a href="/" className="brand-logo">ChatBot</a>
+                            <a href="/" className="brand-logo" style={{ marginLeft: 15 }} >ChatBot</a>
                             <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><a href="/" onClick={this.show}>Show</a></li>
                             </ul>
