@@ -8,11 +8,9 @@ const Shop = () => (
         <div className="heading text-center">
           <h2>
             <span>L</span>earn</h2>
-            <h3 style={{paddingTop: '20px'}}>Lorem ipsum dolor sit amet, consectetur </h3>
-            <p style={{marginBottom: '20px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
+            <h3 style={{paddingTop: '20px'}}>Welcome to LearnHub !</h3>
+            <p style={{marginBottom: '20px'}}> We have instructors who are passionate about sharing what they know and what you need to know. Here at CourseX, we provide the at most guidance to help you acquire knowledge in the domains of Computer Science. 
+Learn programming, data structures, data science and more.</p>
           
         </div>
         <div className="row">
@@ -21,9 +19,7 @@ const Shop = () => (
           </div>
           
           <div className="col-lg-6">
-          <p style={{marginBottom: '20px', marginTop: '0px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            <br />
-            incididunt ut labore et dolore magna aliqua.
+          <p style={{marginBottom: '20px', marginTop: '0px'}}>Understand the concepts in-depth in live sessions with tutors from all over the world. Sign Up for personal training or Masterclass now.
           </p>
            
             <div className="row">

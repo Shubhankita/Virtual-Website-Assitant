@@ -9,9 +9,8 @@ const About = () => {
           <div className="heading text-center">
             <h2>About
               <span>Us</span></h2>
-            <p style={{marginBottom: '20px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              <br />
-              incididunt ut labore et dolore magna aliqua.
+            <p style={{marginBottom: '20px'}}>CourseX is a global online learning platform that offers anyone, anywhere, access to online courses and degrees from leading universities and companies.
+              
             </p>
           </div>
           <div className="row">
@@ -19,11 +18,9 @@ const About = () => {
               <img src="https://www.blogtyrant.com/wp-content/uploads/2011/02/best-about-us-pages.png" alt="about" className="img-fluid" width="100%"   style={{paddingBottom: '20px'}}/>
             </div>
             <div className="col-lg-6">
-              <h3>Lorem ipsum dolor sit amet, consectetur </h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.</p>
+              <h3>Serving the world through learning </h3>
+              <p>We envision a world where anyone, anywhere has the power to transform their life through learning. Whatever your learning styles, we have a course that fits. We are here to help you prepare for the path ahead. Use our Chatbot is to
+  get course recommendations based on your needs.</p>
               <div className="row">
                 <div className="col-md-6">
                 </div>

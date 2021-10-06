@@ -26,8 +26,10 @@ module.exports = app => {
             let responseText = `Sorry, we don't have any specific recommendation about it ${agent.parameters.courses}. We'll add it in the future.
                     For now, here is a link to The 50 Most Popular MOOCs of All Time: https://www.onlinecoursereport.com/the-50-most-popular-moocs-of-all-time/`;
             let coupon = await Coupon.findOne({'course': agent.parameters.courses});
+            const couponLink = `<a href='${coupon.link}'>${coupon.link}</a>`;
+
             if (coupon !== null ) {
-                responseText = `You want to learn about ${agent.parameters.courses}. Here is a link to the course: ${coupon.link}`;
+                responseText = `You want to learn about ${agent.parameters.courses}. Here is a link to the course: ${couponLink}`;
             }
             agent.add(responseText);
         }
